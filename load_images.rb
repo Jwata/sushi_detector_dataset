@@ -2,37 +2,31 @@
 
 require 'csv'
 require 'open-uri'
-require 'base64'
+require 'open_uri_redirections'
+require 'uri'
 
 # dev
 require 'looksee'
 require 'pry-byebug'
 
-DATA_URI_REGEXP =  /^data:([-\w]+\/[-\w\+\.]+)?;base64,(.*)/m
-URL_REGEXP = /https?:\/\/[\S]+/
-
 def main(csv_file, sushi_type)
-  id = 0
   CSV.foreach(csv_file, headers: :first_row) do |row|
-    id += 1
-    save_image(row, sushi_type, id)
+    save_image(row, sushi_type)
   end
 end
 
-def save_image(row, sushi_type, id)
-  _href, src, _name = row.values_at('href', 'src', 'name')
-  puts src
-  image_data = if match = DATA_URI_REGEXP.match(src)
-    Base64.decode64(match[2])
-  elsif URL_REGEXP =~ src
-    open(src).read
-  end
+def save_image(row, sushi_type)
+  href = row['href']
+  img_url = URI::decode_www_form(URI.parse(href).query).to_h['imgurl']
 
-  if image_data
-    open("data/images/#{sushi_type}_#{id}.jpg", 'w') do |file|
-      file << image_data
-      file.close
-    end
+  puts img_url
+  image_data = open(img_url, allow_redirections: :all).read
+  image_ext = '.jpg'
+  image_hash = Digest::MD5.hexdigest(image_data)
+
+  open("data/images/#{sushi_type}_#{image_hash}#{image_ext}", 'w') do |file|
+    file << image_data
+    file.close
   end
 rescue => _e
   puts _e
