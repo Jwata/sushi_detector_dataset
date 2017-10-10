@@ -2,3 +2,5 @@
 .python-version
 
 data/images/*
+
+*/__pycache__/*
