@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>salmon_0f622e814245841858841cf7ea48d98e.jpg</filename>
+	<path>/Users/junji/Development/sushi-recognition/images/salmon_0f622e814245841858841cf7ea48d98e.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>salmon</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>91</xmin>
+			<ymin>140</ymin>
+			<xmax>479</xmax>
+			<ymax>388</ymax>
+		</bndbox>
+	</object>
+</annotation>
