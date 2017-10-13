@@ -5,6 +5,7 @@ Usage:
 
 
 import os
+import random
 import logging
 from lxml import etree
 import tensorflow as tf
@@ -90,12 +91,23 @@ def create_tf_record(output_path,
 def main(_):
     annotations_dir = FLAGS.annotations_dir
     images_dir = FLAGS.images_dir
-    output_path = os.path.join(FLAGS.output_dir, 'train.record')
-    examples_path = os.path.join(FLAGS.annotations_dir, 'trainval.txt')
-    examples = dataset_util.read_examples_list(examples_path)
+    train_output_path = os.path.join(FLAGS.output_dir, 'sushi_train.record')
+    val_output_path = os.path.join(FLAGS.output_dir, 'sushi_val.record')
     label_map_dict = label_map_util.get_label_map_dict(FLAGS.label_map_path)
+    examples_path = os.path.join(FLAGS.annotations_dir, 'trainval.txt')
 
-    create_tf_record(output_path, annotations_dir, images_dir, label_map_dict, examples)
+    examples = dataset_util.read_examples_list(examples_path)
+    random.seed(42)
+    random.shuffle(examples)
+    num_examples = len(examples)
+
+    num_train = int(0.7 * num_examples)
+    train_examples = examples[:num_train]
+    val_examples = examples[num_train:]
+
+
+    create_tf_record(train_output_path, annotations_dir, images_dir, label_map_dict, train_examples)
+    create_tf_record(val_output_path, annotations_dir, images_dir, label_map_dict, val_examples)
 
 if __name__ == '__main__':
     tf.app.run();
