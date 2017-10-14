@@ -1,0 +1,26 @@
+<annotation>
+	<folder>salmon</folder>
+	<filename>salmon_6f59530723fa622491c1f24fd2cfd431.jpg</filename>
+	<path>/Users/junji/Development/sushi_detector_dataset/images/salmon_6f59530723fa622491c1f24fd2cfd431.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>490</width>
+		<height>368</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>salmon</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>90</xmin>
+			<ymin>103</ymin>
+			<xmax>289</xmax>
+			<ymax>327</ymax>
+		</bndbox>
+	</object>
+</annotation>
