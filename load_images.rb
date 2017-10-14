@@ -24,7 +24,7 @@ def save_image(row, sushi_type)
   image_ext = '.jpg'
   image_hash = Digest::MD5.hexdigest(image_data)
 
-  open("data/images/#{sushi_type}_#{image_hash}#{image_ext}", 'w') do |file|
+  open("tmp/images/#{sushi_type}_#{image_hash}#{image_ext}", 'w') do |file|
     file << image_data
     file.close
   end
@@ -32,7 +32,7 @@ rescue => _e
   puts _e
 end
 
-csv_file = ARGV[0]
-sushi_type = File.basename(csv_file).split('.').first.split('_').first
+sushi_type = ARGV[0]
+csv_file = ARGV[1]
 
 main(csv_file, sushi_type)

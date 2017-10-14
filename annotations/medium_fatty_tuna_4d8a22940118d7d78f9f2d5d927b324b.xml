@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>medium_fatty_tuna_4d8a22940118d7d78f9f2d5d927b324b.jpg</filename>
+	<path>/Users/junji/Development/sushi_detector_dataset/images/medium_fatty_tuna_4d8a22940118d7d78f9f2d5d927b324b.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>medium_fatty_tuna</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>331</xmin>
+			<ymin>95</ymin>
+			<xmax>640</xmax>
+			<ymax>342</ymax>
+		</bndbox>
+	</object>
+</annotation>

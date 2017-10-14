@@ -2,3 +2,7 @@ item {
   id: 1
   name: 'salmon'
 }
+item {
+  id: 2
+  name: 'medium_fatty_tuna'
+}
