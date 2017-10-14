@@ -4,3 +4,11 @@
 data/images/*
 
 */__pycache__/*
+
+data/train/*
+data/eval/*
+data/model.*
+data/frozen_inference_graph.pb
+data/graph.pbtxt
+
+tmp/
