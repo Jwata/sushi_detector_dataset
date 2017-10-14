@@ -12,9 +12,6 @@ import tensorflow as tf
 
 from utils import dataset_util, label_map_util
 
-# debug
-from IPython import embed;
-
 flags = tf.app.flags
 flags.DEFINE_string('annotations_dir', '', 'Path to the anottations directory')
 flags.DEFINE_string('images_dir', '', 'Path to the images directory')

@@ -1,0 +1,28 @@
+name: sushi_detector
+channels:
+- defaults
+dependencies:
+- certifi=2016.2.28=py36_0
+- libiconv=1.14=0
+- libprotobuf=3.2.0=0
+- libxml2=2.9.4=0
+- libxslt=1.1.29=0
+- lxml=3.8.0=py36_0
+- mkl=2017.0.3=0
+- numpy=1.12.1=py36_0
+- openssl=1.0.2l=0
+- pip=9.0.1=py36_1
+- protobuf=3.2.0=py36_0
+- python=3.6.2=0
+- readline=6.2=2
+- setuptools=36.4.0=py36_1
+- six=1.10.0=py36_0
+- sqlite=3.13.0=0
+- tensorflow=1.1.0=np112py36_0
+- tk=8.5.18=0
+- werkzeug=0.12.2=py36_0
+- wheel=0.29.0=py36_0
+- xz=5.2.3=0
+- zlib=1.2.11=0
+prefix: /usr/local/miniconda3/envs/sushi_detector
+
