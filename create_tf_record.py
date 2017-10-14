@@ -1,6 +1,6 @@
 """
 Usage:
-    python generate_tfrecord.py --csv_input=data/train_label.csv --output_path=train.record
+    python create_tf_record.py --annotations_dir=`pwd`/annotations --images_dir=`pwd`/images --output_dir=`pwd`/data/ --label_map_path=`pwd`/data/sushi_label_map.pbtxt
 """
 
 
