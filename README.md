@@ -5,7 +5,23 @@ source activate sushi_detector
 ```
 
 # Create TFRecord
-[TBD]
+When you add images and annotations, you need to create TFRecord again.
+
+```
+docker run -it \
+  --volume `pwd`/data:/data \
+  --volume `pwd`/create_tf_record.py:/tensorflow-models/research/create_tf_record.py \
+  jwata/tensorflow-object-detection \
+  python create_tf_record.py \
+    --annotations_dir=/data/annotations \
+    --images_dir=/data/images \
+    --output_dir=/data/ \
+    --label_map_path=/data/sushi_label_map.pbtxt
+```
+or
+```
+./create_tf_record.sh
+```
 
 # Download pretrained model
 ```
@@ -17,7 +33,7 @@ rm -rf ${pretrained_model}.tar.gz ${pretrained_model}
 popd
 ```
 
-# Running in docker container
+# Run in docker container
 ## Training
 ```
 docker run -d -v `pwd`/data:/data --name sushi_detector_train jwata/tensorflow-object-detection \

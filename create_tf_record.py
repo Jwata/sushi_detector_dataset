@@ -10,7 +10,7 @@ import logging
 from lxml import etree
 import tensorflow as tf
 
-from utils import dataset_util, label_map_util
+from object_detection.utils import dataset_util, label_map_util
 
 flags = tf.app.flags
 flags.DEFINE_string('annotations_dir', '', 'Path to the anottations directory')
