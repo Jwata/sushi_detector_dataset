@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>spotted-shad_17f358121073dd2397009f4118ca18ae.jpg</filename>
+	<path>/Users/junji/Development/sushi_detector_dataset/images/spotted-shad_17f358121073dd2397009f4118ca18ae.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>640</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>spotted-shad</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>63</xmin>
+			<ymin>130</ymin>
+			<xmax>586</xmax>
+			<ymax>470</ymax>
+		</bndbox>
+	</object>
+</annotation>

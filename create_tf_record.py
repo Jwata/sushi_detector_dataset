@@ -102,7 +102,6 @@ def main(_):
     train_examples = examples[:num_train]
     val_examples = examples[num_train:]
 
-
     create_tf_record(train_output_path, annotations_dir, images_dir, label_map_dict, train_examples)
     create_tf_record(val_output_path, annotations_dir, images_dir, label_map_dict, val_examples)
 
