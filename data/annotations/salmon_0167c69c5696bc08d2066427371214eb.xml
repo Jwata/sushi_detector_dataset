@@ -1,7 +1,7 @@
 <annotation>
-	<folder>salmon</folder>
+	<folder>images</folder>
 	<filename>salmon_0167c69c5696bc08d2066427371214eb.jpg</filename>
-	<path>/Users/junji/Development/sushi_detector_dataset/images/salmon_0167c69c5696bc08d2066427371214eb.jpg</path>
+	<path>/Users/junji/Development/sushi_detector_dataset/data/images/salmon_0167c69c5696bc08d2066427371214eb.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
@@ -17,10 +17,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>326</xmin>
-			<ymin>161</ymin>
-			<xmax>483</xmax>
-			<ymax>411</ymax>
+			<xmin>327</xmin>
+			<ymin>164</ymin>
+			<xmax>481</xmax>
+			<ymax>412</ymax>
 		</bndbox>
 	</object>
 </annotation>

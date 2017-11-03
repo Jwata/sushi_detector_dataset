@@ -4,7 +4,7 @@ item {
 }
 item {
   id: 2
-  name: 'medium_fatty_tuna'
+  name: 'medium-fatty-tuna'
 }
 item {
   id: 3
