@@ -62,6 +62,7 @@ open http://localhost:6006
 ```
 
 # Run on Google Cloud
+## Setup
 Complete the following step checking the official documents
 >
 1. Create a GCP project
@@ -69,7 +70,8 @@ Complete the following step checking the official documents
 3. Enable the ML Engine APIs
 4. Set up a Google Cloud Storage (GCS) bucket
 
-
 - [Running on Google Cloud Platform](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_cloud.md)
 - [Quick Start: Distributed Training on the Oxford-IIIT Pets Dataset on Google Cloud](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
 
+# Upload files
+GCS_BUCKET=your_bucket_name ./gcp/upload_files_to_gcs_bucket.sh
