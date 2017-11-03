@@ -60,3 +60,16 @@ docker run -d -v `pwd`/data:/data -p 6006:6006 --name tensorboard jwata/tensorfl
 
 open http://localhost:6006
 ```
+
+# Run on Google Cloud
+Complete the following step checking the official documents
+>
+1. Create a GCP project
+2. Install the Google Cloud SDK
+3. Enable the ML Engine APIs
+4. Set up a Google Cloud Storage (GCS) bucket
+
+
+- [Running on Google Cloud Platform](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_cloud.md)
+- [Quick Start: Distributed Training on the Oxford-IIIT Pets Dataset on Google Cloud](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
+
