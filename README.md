@@ -75,3 +75,12 @@ Complete the following step checking the official documents
 
 # Upload files
 GCS_BUCKET=your_bucket_name ./gcp/upload_files_to_gcs_bucket.sh
+
+# Copy packaged Tennsorflow Object Detection code from the Docker container
+We need to package the Tensorflow Object Detection code to run it on Google Cloud,
+but the custom docker that we are using already has [the packaged code](https://github.com/Jwata/models/blob/master/Dockerfile.object_detectoin)
+
+```
+# copy the packaged code to dist dir
+./gcp/get_tensorflow_code_from_docker.sh
+```
