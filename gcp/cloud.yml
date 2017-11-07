@@ -1,0 +1,3 @@
+trainingInput:
+  runtimeVersion: "1.0"
+  scaleTier: BASIC_GPU

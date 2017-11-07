@@ -62,6 +62,9 @@ open http://localhost:6006
 ```
 
 # Run on Google Cloud
+2017/11/07  
+The following steps don't work because Google Cloud ML Engine doesn't support the latest tensorflow version 1.4. Check [this runtime version list](https://cloud.google.com/ml-engine/docs/runtime-version-list).
+
 ## Setup
 Complete the following step checking the official documents
 >
@@ -73,14 +76,17 @@ Complete the following step checking the official documents
 - [Running on Google Cloud Platform](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_cloud.md)
 - [Quick Start: Distributed Training on the Oxford-IIIT Pets Dataset on Google Cloud](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
 
-# Upload files
+## Upload files
+```
 GCS_BUCKET=your_bucket_name ./gcp/upload_files_to_gcs_bucket.sh
+```
 
-# Copy packaged Tennsorflow Object Detection code from the Docker container
-We need to package the Tensorflow Object Detection code to run it on Google Cloud,
-but the custom docker that we are using already has [the packaged code](https://github.com/Jwata/models/blob/master/Dockerfile.object_detectoin)
+We need to package the Tensorflow Object Detection code to run it on Google Cloud, but the custom docker that we are using already has [the packaged code](https://github.com/Jwata/models/blob/master/Dockerfile.object_detectoin)
 
 ```
-# copy the packaged code to dist dir
 ./gcp/get_tensorflow_code_from_docker.sh
 ```
+
+## Training
+## Evaluation
+## Tensorboard
