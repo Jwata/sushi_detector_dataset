@@ -1,10 +1,5 @@
-# Create python environment
-```
-conda env create -f environment.yml
-source activate sushi_detector
-```
-
-# Create TFRecord
+# Data preparation
+## Create TFRecord
 When you add images and annotations, you need to create TFRecord again.
 
 ```
@@ -23,7 +18,7 @@ or
 ./create_tf_record.sh
 ```
 
-# Download pretrained model
+## Download pretrained model
 ```
 pushd data
 pretrained_model=ssd_mobilenet_v1_coco_11_06_2017
@@ -60,6 +55,66 @@ docker run -d -v `pwd`/data:/data -p 6006:6006 --name tensorboard jwata/tensorfl
 
 open http://localhost:6006
 ```
+
+# Run on Floydhub
+> Platform-as-a-Service for training and deploying your DL models in the cloud
+> [FloydHub - Deep Learning Platform - Cloud GPU](https://www.floydhub.com/)
+
+## Setup
+1. Create your floydhub account
+2. [Install floyd cli](https://docs.floydhub.com/guides/basics/install/)
+3. Create a project
+
+  ```
+  floyd init your_project_name
+  ```
+
+4. Create dataset 
+
+  ```
+  cd data
+  floyd data init your_dataset_name
+  floyd data upload
+  ```
+
+## Training
+### Run
+
+```
+# CPU
+floyd run --env tensorflow-1.3 \                           
+  --data junji/datasets/sushi_detector/1:data \
+  "bash ./floyd/setup.sh && sh ./floyd/train.sh"
+
+=> junji/projects/sushi_detector/1
+```
+
+or
+
+```
+# GPU
+floyd run --gpu --env tensorflow-1.3 \
+...
+```
+
+
+### Stop 
+
+```
+floyd stop junji/projects/sushi_detector/1
+```
+
+### Run from the output of a past job
+
+```
+floyd run --env tensorflow-1.3 \                           
+  --data junji/datasets/sushi_detector/1:data \
+  --data junji/projects/sushi_detector/1/output:output_past \
+  "bash ./floyd/setup.sh && sh ./floyd/copy_past_output.sh && sh ./floyd/train.sh"
+
+=> junji/projects/sushi_detector/2
+```
+
 
 # Run on Google Cloud
 2017/11/07  
