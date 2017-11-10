@@ -64,20 +64,20 @@ open http://localhost:6006
   ```
 
 ## Training
-### Run
+### Run from a dataset
 
 ```
 # CPU
-floyd run --env tensorflow-1.3 \ 
+floyd run --env tensorflow-1.4 \
   --data junji/datasets/sushi_detector/1:data \
-  "bash ./floyd/setup.sh && sh ./floyd/train.sh"
+  "bash ./floyd/setup.sh && cp -R /data/* /output && sh ./floyd/train.sh"
 
 => junji/projects/sushi_detector/1
 ```
 
 ```
 # GPU
-floyd run --gpu --env tensorflow-1.3 \
+floyd run --gpu --env tensorflow-1.4 \
 ...
 ```
 
@@ -91,22 +91,28 @@ floyd stop junji/projects/sushi_detector/1
 ### Run from the output of a past job
 
 ```
-floyd run --env tensorflow-1.3 \
-  --data junji/datasets/sushi_detector/1:data \
-  --data junji/projects/sushi_detector/1/output:output_past \
-  "bash ./floyd/setup.sh && cp -R /output_past/* /output && sh ./floyd/train.sh"
+floyd run --env tensorflow-1.4 \
+  --data junji/projects/sushi_detector/{job_id}/output:data \
+  "bash ./floyd/setup.sh && cp -R /data/* /output && sh ./floyd/train.sh"
 
 => junji/projects/sushi_detector/2
 ```
 
 ## Evaluation
-### Run
 
 ```
-floyd run --env tensorflow-1.3 \
-  --data junji/datasets/sushi_detector/1:data \
-  --data junji/projects/sushi_detector/1/output:output_past \
-  "bash ./floyd/setup.sh && cp -R /output_past/* /output && sh ./floyd/eval.sh"
+floyd run --env tensorflow-1.4 \
+  --data junji/projects/sushi_detector/{job_id}/output:data \
+  "bash ./floyd/setup.sh && cp -R /data/* /output && sh ./floyd/eval.sh"
+
+```
+
+## Tensorboard
+
+```
+floyd run --tensorboard \
+  --data junji/projects/sushi_detector/{job_id}/output:data \
+  "tensorboard --logdir=/data"
 ```
 
 
