@@ -4,6 +4,7 @@ Usage:
 """
 
 
+import hashlib
 import os
 import random
 import logging
@@ -29,6 +30,7 @@ def dict_to_tf_example(example_dict, label_map_dict, images_dir):
     with tf.gfile.GFile(image_path, 'rb') as fid:
         encoded_image_data = fid.read()
     image_format = b'jpeg'
+    key = hashlib.sha256(encoded_image_data).hexdigest()
 
     xmins = []
     xmaxs = []
@@ -50,6 +52,7 @@ def dict_to_tf_example(example_dict, label_map_dict, images_dir):
         'image/width': dataset_util.int64_feature(width),
         'image/filename': dataset_util.bytes_feature(filename.encode('utf8')),
         'image/source_id': dataset_util.bytes_feature(filename.encode('utf8')),
+        'image/key/sha256': dataset_util.bytes_feature(key.encode('utf8')),
         'image/encoded': dataset_util.bytes_feature(encoded_image_data),
         'image/format': dataset_util.bytes_feature(image_format),
         'image/object/bbox/xmin': dataset_util.float_list_feature(xmins),
