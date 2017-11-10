@@ -6,7 +6,7 @@ When you add images and annotations, you need to create TFRecord again.
 docker run -it \
   --volume `pwd`:/tensorflow \
   floydhub/tensorflow:1.4.0-py3_aws.14 \
-  /tensorflow/create_tf_record.sh
+  /tensorflow/docker/create_tf_record.sh
 ```
 
 ## Download pretrained model
@@ -22,28 +22,23 @@ popd
 # Run in docker container
 ## Training
 ```
-docker run -d -v `pwd`/data:/data --name sushi_detector_train jwata/tensorflow-object-detection \
-  python object_detection/train.py \
-  --logtostderr \
-  --pipeline_config_path=/data/ssd_mobilenet_v1_sushi.docker.config \
-  --train_dir=/data/train
+docker run -it \
+  --volume `pwd`:/tensorflow \
+  floydhub/tensorflow:1.4.0-py3_aws.14 \
+  /tensorflow/docker/train.sh
 ```
 
 ## Evaluation
 ```
-docker run -d -v `pwd`/data:/data --name sushi_detector_eval jwata/tensorflow-object-detection \
-  python object_detection/eval.py \
-  --logtostderr \
-  --pipeline_config_path=/data/ssd_mobilenet_v1_sushi.docker.config \
-  --checkpoint_dir=/data/train \
-  --eval_dir=/data/eval
+docker run -it \
+  --volume `pwd`:/tensorflow \
+  floydhub/tensorflow:1.4.0-py3_aws.14 \
+  /tensorflow/docker/eval.sh
 ```
 
 ## Tensorboard
 ```
-docker run -d -v `pwd`/data:/data -p 6006:6006 --name tensorboard jwata/tensorflow-object-detection \
-  tensorboard --logdir=/data
-
+tensorboard --logdir=data
 open http://localhost:6006
 ```
 
