@@ -89,8 +89,6 @@ floyd run --env tensorflow-1.3 \
 => junji/projects/sushi_detector/1
 ```
 
-or
-
 ```
 # GPU
 floyd run --gpu --env tensorflow-1.3 \
@@ -107,12 +105,22 @@ floyd stop junji/projects/sushi_detector/1
 ### Run from the output of a past job
 
 ```
-floyd run --env tensorflow-1.3 \                           
+floyd run --env tensorflow-1.3 \
   --data junji/datasets/sushi_detector/1:data \
   --data junji/projects/sushi_detector/1/output:output_past \
-  "bash ./floyd/setup.sh && sh ./floyd/copy_past_output.sh && sh ./floyd/train.sh"
+  "bash ./floyd/setup.sh && cp -R /output_past/* /output && sh ./floyd/train.sh"
 
 => junji/projects/sushi_detector/2
+```
+
+## Evaluation
+### Run
+
+```
+floyd run --env tensorflow-1.3 \
+  --data junji/datasets/sushi_detector/1:data \
+  --data junji/projects/sushi_detector/1/output:output_past \
+  "bash ./floyd/setup.sh && cp -R /output_past/* /output && sh ./floyd/eval.sh"
 ```
 
 
