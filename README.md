@@ -4,18 +4,9 @@ When you add images and annotations, you need to create TFRecord again.
 
 ```
 docker run -it \
-  --volume `pwd`/data:/data \
-  --volume `pwd`/create_tf_record.py:/tensorflow-models/research/create_tf_record.py \
-  jwata/tensorflow-object-detection \
-  python create_tf_record.py \
-    --annotations_dir=/data/annotations \
-    --images_dir=/data/images \
-    --output_dir=/data/ \
-    --label_map_path=/data/sushi_label_map.pbtxt
-```
-or
-```
-./create_tf_record.sh
+  --volume `pwd`:/tensorflow \
+  floydhub/tensorflow:1.4.0-py3_aws.14 \
+  /tensorflow/create_tf_record.sh
 ```
 
 ## Download pretrained model
@@ -82,7 +73,7 @@ open http://localhost:6006
 
 ```
 # CPU
-floyd run --env tensorflow-1.3 \                           
+floyd run --env tensorflow-1.3 \ 
   --data junji/datasets/sushi_detector/1:data \
   "bash ./floyd/setup.sh && sh ./floyd/train.sh"
 

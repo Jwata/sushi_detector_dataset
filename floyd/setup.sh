@@ -1,9 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 tar -xvf dist/object_detection-0.1.tar.gz
 pushd object_detection-0.1
-  protoc object_detection/protos/*.proto --python_out=.
-  export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
   python setup.py install
 popd
 
