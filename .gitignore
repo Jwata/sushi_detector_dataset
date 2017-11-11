@@ -6,9 +6,12 @@ data/images/*
 */__pycache__/*
 
 data/train/*
-data/eval/*
+!data/train/output_inference_graph.pb
+data/val/*
 data/model.*
 data/frozen_inference_graph.pb
 data/graph.pbtxt
 
 tmp/
+object_detection-0.1/
+slim-0.1/

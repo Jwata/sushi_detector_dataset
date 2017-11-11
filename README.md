@@ -42,6 +42,26 @@ tensorboard --logdir=data
 open http://localhost:6006
 ```
 
+## Export a trained model
+
+[Check this document](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md)
+
+```
+docker run -it \
+  --volume `pwd`:/tensorflow \
+  floydhub/tensorflow:1.4.0-py3_aws.14 \
+  /bin/bash
+
+> ln -s /tensorflow/data /data
+> cd /tensorboard
+> ./floyd/setup.sh
+> python -m object_detection.export_inference_graph \
+    --input_type=image_tensor \
+    --pipeline_config_path=/tensorflow/data/ssd_mobilenet_v1_sushi.floyd.config \
+    --trained_checkpoint_prefix=/data/train/model.ckpt-${checkpoint_number} \
+    --output_directory=/tensorflow/data/output_inference_graph.pb
+```
+
 # Run on Floydhub
 > Platform-as-a-Service for training and deploying your DL models in the cloud
 > [FloydHub - Deep Learning Platform - Cloud GPU](https://www.floydhub.com/)
@@ -98,21 +118,13 @@ floyd run --env tensorflow-1.4 \
 => junji/projects/sushi_detector/2
 ```
 
-## Evaluation
+## Evaluation & Tensorboard
 
 ```
-floyd run --env tensorflow-1.4 \
+floyd run --tensorboard --env tensorflow-1.4 \
   --data junji/projects/sushi_detector/{job_id}/output:data \
-  "bash ./floyd/setup.sh && cp -R /data/* /output && sh ./floyd/eval.sh"
+  "bash ./floyd/setup.sh && cp -R /data/* /output && nohup sh ./floyd/eval.sh" && tensorboard --logdir=/output
 
-```
-
-## Tensorboard
-
-```
-floyd run --tensorboard \
-  --data junji/projects/sushi_detector/{job_id}/output:data \
-  "tensorboard --logdir=/data"
 ```
 
 
